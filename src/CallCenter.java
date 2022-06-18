@@ -17,10 +17,12 @@ public class CallCenter {
         while (!casesPool.isEmpty()) {
             try {
                 Cases firstCase = casesPool.poll();
-                System.out.println(" - Work with case: " + firstCase + " " + Thread.currentThread().getName());
-                Thread.sleep(MILLIS_CUSTOMER);
-                System.out.println(" - Done with case: " + firstCase + " " + Thread.currentThread().getName());
-                System.out.println("Cases Pool Size: " + casesPool.size() + " " + Thread.currentThread().getName());
+                if (firstCase != null) {
+                    System.out.println(" - Work with case: " + firstCase + " " + Thread.currentThread().getName());
+                    Thread.sleep(MILLIS_CUSTOMER);
+                    System.out.println(" - Done with case: " + firstCase + " " + Thread.currentThread().getName());
+                    System.out.println("Cases Pool Size: " + casesPool.size() + " " + Thread.currentThread().getName());
+                }
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
